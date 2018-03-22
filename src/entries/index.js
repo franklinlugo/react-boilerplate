@@ -1,6 +1,5 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { App } from '../components/App';
 
-const el = React.createElement('h1', null, 'hello world');
-
-ReactDOM.render(el, document.getElementById('app'))
+ReactDOM.render(<App />, document.getElementById('app'))
