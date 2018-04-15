@@ -16,7 +16,11 @@
   },
   "rules": {
     "prettier/prettier": ["error", { "singleQuote": true }],
-    "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }]
+    "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
+    "react/forbid-prop-types": [
+      false,
+      { "forbid": ["any", "array", "object"], "checkContextTypes": false, "checkChildContextTypes": false }
+    ]
   },
   "globals": {
     "DEBUG": false
