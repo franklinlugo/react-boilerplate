@@ -8,19 +8,19 @@ module.exports = env => {
   if (env.NODE_ENV === 'production') {
     plugins.push(
       new CleanWebpackPlugin(['dist'], {
-        root: __dirname,
+        root: __dirname
       })
     );
   }
 
   return {
     entry: {
-      main: path.resolve(__dirname, 'src/entries/index.js'),
+      main: path.resolve(__dirname, 'src/entries/index.js')
     },
     output: {
       path: path.resolve(__dirname, 'dist'),
       filename: 'js/[name].js',
-      publicPath: path.resolve(__dirname, 'dist'),
+      publicPath: path.resolve(__dirname, 'dist')
     },
     module: {
       rules: [
@@ -30,9 +30,9 @@ module.exports = env => {
           use: {
             loader: 'babel-loader',
             options: {
-              presets: ['env', 'react', 'stage-2'],
-            },
-          },
+              presets: ['env', 'react', 'stage-2']
+            }
+          }
         },
         {
           test: /\.css$/,
@@ -41,11 +41,11 @@ module.exports = env => {
               {
                 loader: 'css-loader',
                 options: {
-                  minimize: true,
-                },
-              },
-            ],
-          }),
+                  minimize: true
+                }
+              }
+            ]
+          })
         },
         {
           test: /\.(jpg|png|gif|svg)$/,
@@ -54,12 +54,12 @@ module.exports = env => {
             options: {
               limit: 10000,
               fallback: 'file-loader',
-              name: 'images/[name].[ext]',
-            },
-          },
-        },
-      ],
+              name: 'images/[name].[ext]'
+            }
+          }
+        }
+      ]
     },
-    plugins,
+    plugins
   };
 };
