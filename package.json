@@ -4,7 +4,7 @@
   "description": "react boilerplate with webpack in order to have a straightforward scaffold to practice",
   "main": "src/entries/index.js",
   "scripts": {
-    "build:dev": "webpack-dev-server --config ./webpack.dev.config.js --mode development --open 'google-chrome'",
+    "start": "webpack-dev-server --config ./webpack.dev.config.js --mode development --open 'google-chrome'",
     "build:local": "webpack --env.NODE_ENV=local",
     "build:prod": "webpack -p --env.NODE_ENV=production",
     "format": "prettier-eslint --single-quote --print-width=120 --write webpack.dev.config.js \"src/**/*.{js,jsx}\"",
