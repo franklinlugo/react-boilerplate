@@ -2,17 +2,17 @@ const path = require('path');
 
 module.exports = {
   entry: {
-    main: path.resolve(__dirname, 'src/entries/index.js')
+    main: path.resolve(__dirname, 'src/entries/index.js'),
   },
   output: {
     path: path.resolve(__dirname, 'dist'),
     filename: 'js/[name].js',
-    publicPath: '/'
+    publicPath: '/',
   },
   devtool: 'eval-source-map',
   devServer: {
     historyApiFallback: true,
-    port: 8000
+    port: 8000,
   },
   module: {
     rules: [
@@ -22,13 +22,13 @@ module.exports = {
         use: {
           loader: 'babel-loader',
           options: {
-            presets: ['env', 'react', 'stage-2']
-          }
-        }
+            presets: ['@babel/preset-env', '@babel/preset-react'],
+          },
+        },
       },
       {
         test: /\.css$/,
-        use: ['style-loader', 'css-loader']
+        use: ['style-loader', 'css-loader'],
       },
       {
         test: /\.(jpg|png|gif|svg)$/,
@@ -37,10 +37,10 @@ module.exports = {
           options: {
             limit: 1000000,
             fallback: 'file-loader',
-            name: 'images/[name].[ext]'
-          }
-        }
-      }
-    ]
-  }
+            name: 'images/[name].[ext]',
+          },
+        },
+      },
+    ],
+  },
 };
