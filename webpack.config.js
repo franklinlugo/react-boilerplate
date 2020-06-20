@@ -1,65 +1,61 @@
 const path = require('path');
-const ExtractTextPlugin = require('extract-text-webpack-plugin');
-const CleanWebpackPlugin = require('clean-webpack-plugin');
+const HtmlWebPackPlugin = require("html-webpack-plugin");
 
-module.exports = env => {
-  const plugins = [new ExtractTextPlugin('css/[name].css')];
-
-  if (env.NODE_ENV === 'production') {
-    plugins.push(
-      new CleanWebpackPlugin(['dist'], {
-        root: __dirname,
-      })
-    );
+const javascriptRules = {
+  test: /\.jsx?$/,
+  exclude: /node_modules/,
+  use: {
+    loader: "babel-loader"
   }
+};
+
+const htmlRules = {
+  test: /\.html$/,
+  use: [
+    { loader: "html-loader" }
+  ]
+};
+
+const fileRules = {
+  test: /\.(jpe?g|png|gif|svg)$/i,
+  use: [
+    {
+      loader: 'file-loader',
+    },
+  ],
+}
+
+const cssRules =    {
+  test: /\.css$/,
+  use: ['style-loader', 'css-loader'],
+}
+
+const rules = [
+  javascriptRules,
+  htmlRules,
+  fileRules,
+  cssRules
+];
+
+module.exports = (env, argv) => {
+  const isProduction = argv.mode === "production";
+  const isDevelopment = !isProduction;
 
   return {
-    entry: {
-      main: path.resolve(__dirname, 'src/entries/index.js'),
-    },
+    entry: './src/index.js',
     output: {
       path: path.resolve(__dirname, 'dist'),
-      filename: 'js/[name].js',
-      publicPath: path.resolve(__dirname, 'dist'),
+      filename: '[name].js'
     },
-    module: {
-      rules: [
-        {
-          test: /\.(js|jsx)$/,
-          exclude: /(node_modules)/,
-          use: {
-            loader: 'babel-loader',
-            options: {
-              presets: ['@babel/preset-env', '@babel/preset-react'],
-            },
-          },
-        },
-        {
-          test: /\.css$/,
-          use: ExtractTextPlugin.extract({
-            use: [
-              {
-                loader: 'css-loader',
-                options: {
-                  minimize: true,
-                },
-              },
-            ],
-          }),
-        },
-        {
-          test: /\.(jpg|png|gif|svg)$/,
-          use: {
-            loader: 'url-loader',
-            options: {
-              limit: 10000,
-              fallback: 'file-loader',
-              name: 'images/[name].[ext]',
-            },
-          },
-        },
-      ],
+    devServer: {
+      port: 3000
     },
-    plugins,
-  };
-};
+    module: { rules },
+    plugins: [
+      new HtmlWebPackPlugin({
+        template: "./src/index.html",
+        filename: './index.html'
+      })
+    ]
+  }
+}
