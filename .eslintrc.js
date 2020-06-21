@@ -13,11 +13,11 @@ module.exports = {
   },
   extends: [
     'eslint:recommended',
-    'plugin:prettier/recommended',
     'plugin:react/recommended',
     'plugin:react-hooks/recommended',
     'airbnb',
     'airbnb/hooks',
+    'plugin:prettier/recommended',
     'prettier/react',
   ],
   plugins: [],
