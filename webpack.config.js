@@ -1,19 +1,17 @@
 const path = require('path');
-const HtmlWebPackPlugin = require("html-webpack-plugin");
+const HtmlWebPackPlugin = require('html-webpack-plugin');
 
 const javascriptRules = {
   test: /\.jsx?$/,
   exclude: /node_modules/,
   use: {
-    loader: "babel-loader"
-  }
+    loader: 'babel-loader',
+  },
 };
 
 const htmlRules = {
   test: /\.html$/,
-  use: [
-    { loader: "html-loader" }
-  ]
+  use: [{ loader: 'html-loader' }],
 };
 
 const fileRules = {
@@ -23,39 +21,34 @@ const fileRules = {
       loader: 'file-loader',
     },
   ],
-}
+};
 
-const cssRules =    {
+const cssRules = {
   test: /\.css$/,
   use: ['style-loader', 'css-loader'],
-}
+};
 
-const rules = [
-  javascriptRules,
-  htmlRules,
-  fileRules,
-  cssRules
-];
+const rules = [javascriptRules, htmlRules, fileRules, cssRules];
 
 module.exports = (env, argv) => {
-  const isProduction = argv.mode === "production";
+  const isProduction = argv.mode === 'production';
   const isDevelopment = !isProduction;
 
   return {
     entry: './src/index.js',
     output: {
       path: path.resolve(__dirname, 'dist'),
-      filename: '[name].js'
+      filename: '[name].js',
     },
     devServer: {
-      port: 3000
+      port: 3000,
     },
     module: { rules },
     plugins: [
       new HtmlWebPackPlugin({
-        template: "./src/index.html",
-        filename: './index.html'
-      })
-    ]
-  }
-}
+        template: './src/index.html',
+        filename: './index.html',
+      }),
+    ],
+  };
+};
