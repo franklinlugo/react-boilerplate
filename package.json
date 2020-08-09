@@ -37,6 +37,7 @@
     "babel-eslint": "10.1.0",
     "babel-loader": "8.1.0",
     "css-loader": "4.2.0",
+    "error-overlay-webpack-plugin": "^0.4.1",
     "eslint": "7.6.0",
     "eslint-config-airbnb": "18.2.0",
     "eslint-config-prettier": "6.11.0",
