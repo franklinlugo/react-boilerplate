@@ -7,7 +7,8 @@
     "start": "webpack-dev-server --mode development",
     "build": "webpack --mode production",
     "format": "prettier --write \"**/*.+(js|jsx)\"",
-    "lint": "eslint **/*.{js,jsx} --quiet"
+    "lint": "eslint **/*.{js,jsx} --quiet",
+    "test": "jest"
   },
   "repository": {
     "type": "git",
@@ -34,7 +35,10 @@
     "@babel/plugin-transform-runtime": "^7.11.0",
     "@babel/preset-env": "7.11.0",
     "@babel/preset-react": "7.10.4",
+    "@testing-library/jest-dom": "^5.11.3",
+    "@testing-library/react": "^10.4.8",
     "babel-eslint": "10.1.0",
+    "babel-jest": "^26.3.0",
     "babel-loader": "8.1.0",
     "css-loader": "4.2.0",
     "error-overlay-webpack-plugin": "^0.4.1",
@@ -49,6 +53,7 @@
     "file-loader": "6.0.0",
     "html-loader": "1.1.0",
     "html-webpack-plugin": "4.3.0",
+    "jest": "^26.4.0",
     "prettier": "2.0.5",
     "style-loader": "1.2.1",
     "webpack": "4.44.1",
