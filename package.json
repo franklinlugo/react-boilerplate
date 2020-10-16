@@ -4,8 +4,8 @@
   "description": "react boilerplate with webpack in order to have a straightforward scaffold to practice",
   "main": "src/entries/index.js",
   "scripts": {
-    "start": "webpack-dev-server --mode development",
-    "build": "webpack --mode production",
+    "start": "webpack-dev-server  --config ./scripts/webpack.dev.js",
+    "build": "webpack --config ./scripts/webpack.prod.js",
     "prettier": "prettier --ignore-path .gitignore \"**/*.+(js|json)\"",
     "format": "npm run prettier -- --write",
     "check-format": "npm run prettier -- --list-different",
@@ -30,6 +30,7 @@
   "homepage": "https://github.com/franklinlugo/react-boilerplate-with-webpack#readme",
   "dependencies": {
     "@babel/runtime": "^7.11.2",
+    "dotenv": "^8.2.0",
     "react": "16.13.1",
     "react-dom": "16.13.1",
     "styled-components": "^5.2.0"
@@ -72,6 +73,7 @@
     "stylelint-processor-styled-components": "^1.10.0",
     "webpack": "4.44.2",
     "webpack-cli": "3.3.12",
-    "webpack-dev-server": "3.11.0"
+    "webpack-dev-server": "3.11.0",
+    "webpack-merge": "^5.2.0"
   }
 }

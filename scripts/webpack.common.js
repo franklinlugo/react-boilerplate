@@ -1,6 +1,8 @@
 const path = require('path');
+const webpack = require('webpack');
 const HtmlWebPackPlugin = require('html-webpack-plugin');
 const ErrorOverlayPlugin = require('error-overlay-webpack-plugin');
+const dotenv = require('dotenv').config({ path: path.join(__dirname, '.env') });
 
 const javascriptRules = {
   test: /\.jsx?$/,
@@ -31,28 +33,21 @@ const cssRules = {
 
 const rules = [javascriptRules, htmlRules, fileRules, cssRules];
 
-module.exports = (env, argv) => {
-  const isProduction = argv.mode === 'production';
-  const isDevelopment = !isProduction;
-
-  return {
-    entry: './src/index.js',
-    output: {
-      path: path.resolve(__dirname, 'dist'),
-      filename: '[name].js',
-    },
-    devServer: {
-      port: 3000,
-      historyApiFallback: true,
-    },
-    module: { rules },
-    devtool: 'cheap-module-source-map',
-    plugins: [
-      new HtmlWebPackPlugin({
-        template: './src/index.html',
-        filename: './index.html',
-      }),
-      new ErrorOverlayPlugin(),
-    ],
-  };
+module.exports = {
+  entry: './src/index.js',
+  output: {
+    path: path.resolve(__dirname, '../dist'),
+    filename: '[name].js',
+  },
+  module: { rules },
+  plugins: [
+    new HtmlWebPackPlugin({
+      template: './src/index.html',
+      filename: 'index.html',
+    }),
+    new ErrorOverlayPlugin(),
+    new webpack.DefinePlugin({
+      'process.env': JSON.stringify(dotenv.parsed || {}),
+    }),
+  ],
 };
