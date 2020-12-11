@@ -5,7 +5,8 @@ module.exports = merge(common, {
   mode: 'development',
   devtool: 'inline-source-map',
   devServer: {
-    port: 3000,
     historyApiFallback: true,
+    port: 3000,
+    publicPath: '/',
   },
 });
