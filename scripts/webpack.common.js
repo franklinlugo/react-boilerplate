@@ -6,8 +6,9 @@ const dotenv = require('dotenv').config({ path: path.join(__dirname, '.env') });
 module.exports = {
   entry: './src/index.js',
   output: {
-    path: path.resolve(__dirname, '../dist'),
     filename: '[name].js',
+    path: path.resolve(__dirname, '../dist'),
+    publicPath: '/',
   },
   module: {
     rules: [
