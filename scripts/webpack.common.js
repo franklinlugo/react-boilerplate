@@ -1,7 +1,6 @@
 const path = require('path');
 const webpack = require('webpack');
 const HtmlWebPackPlugin = require('html-webpack-plugin');
-const ErrorOverlayPlugin = require('error-overlay-webpack-plugin');
 const dotenv = require('dotenv').config({ path: path.join(__dirname, '.env') });
 
 module.exports = {
@@ -42,7 +41,6 @@ module.exports = {
       template: './public/index.html',
       filename: 'index.html',
     }),
-    new ErrorOverlayPlugin(),
     new webpack.DefinePlugin({
       'process.env': JSON.stringify(dotenv.parsed || {}),
     }),
