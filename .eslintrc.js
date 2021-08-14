@@ -18,7 +18,6 @@ module.exports = {
     'airbnb',
     'airbnb/hooks',
     'plugin:prettier/recommended',
-    'prettier/react',
   ],
   plugins: [],
   ignorePatterns: ['mocks', 'mock', 'dist/', 'build/', 'public/', '.scss', '.svg'],
