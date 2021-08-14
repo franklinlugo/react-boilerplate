@@ -2,7 +2,7 @@
   "name": "react-boilerplate-with-webpack",
   "version": "0.1.0",
   "description": "react boilerplate with webpack in order to have a straightforward scaffold to practice",
-  "main": "src/entries/index.js",
+  "main": "src/index.js",
   "scripts": {
     "start": "webpack serve --config ./scripts/webpack.dev.js",
     "build": "webpack --config ./scripts/webpack.prod.js",
@@ -29,7 +29,7 @@
   },
   "homepage": "https://github.com/franklinlugo/react-boilerplate-with-webpack#readme",
   "dependencies": {
-    "@babel/runtime": "^7.13.10",
+    "@babel/runtime": "^7.15.3",
     "dotenv": "^8.2.0",
     "react": "17.0.2",
     "react-dom": "17.0.2",
