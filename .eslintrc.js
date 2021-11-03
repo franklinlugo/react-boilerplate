@@ -57,6 +57,7 @@ module.exports = {
     'react/button-has-type': WARNING,
     'react/jsx-pascal-case': ERROR,
     'react/require-default-props': OFF,
+    'react/jsx-props-no-spreading': OFF,
     'jsx-a11y/control-has-associated-label': OFF,
     'jsx-a11y/click-events-have-key-events': OFF,
   },
